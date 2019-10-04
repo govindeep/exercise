@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class HomeComponent implements OnInit {
   gamesList$: Observable<any[]>;
   getListError = false;
+  noGamesFound = false;
 
   constructor(
     private _homeService: HomeService
@@ -44,17 +45,22 @@ export class HomeComponent implements OnInit {
    * @returns {Array} array of formatted games data
    */
   private _formatGamesData(data: []) {
-    return data.map((game: any) => {
-      return {
-        name: game.name,
-        shortDescription: game.shortdescription,
-        dateCreated: game.datecreated,
-        createdBy: game.createdby === 'none' ? '' : game.createdby,
-        hostDays: game.hostdays,
-        password: game.password.length > 0,
-        url: `${environment.planetsGameInfoUrl}?gameid=${game.id}`
-      }
-    })
+    if (data.length > 0) {
+      return data.map((game: any) => {
+        return {
+          name: game.name,
+          shortDescription: game.shortdescription,
+          dateCreated: game.datecreated,
+          createdBy: game.createdby === 'none' ? '' : game.createdby,
+          hostDays: game.hostdays,
+          password: game.password.length > 0,
+          url: `${environment.planetsGameInfoUrl}?gameid=${game.id}`
+        }
+      })
+    } else {
+      this.noGamesFound = true;
+      return null;
+    }
   }
 
 }

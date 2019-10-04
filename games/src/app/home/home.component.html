@@ -1,6 +1,11 @@
-<div class="home container-fluid mt-3" *ngIf="gamesList$ | async as games" [ngClass]="[games ? 'fade-in' : 'invisible']">
-    <app-table [tableData]="games"></app-table>
-</div>
-<div *ngIf="getListError" class="alert alert-danger" role="alert">
-    Error Getting Games List
+<div class="home container-fluid mt-3">
+    <div *ngIf="gamesList$ | async as games" [ngClass]="[games ? 'fade-in' : 'invisible']">
+        <app-table [tableData]="games"></app-table>
+    </div>
+    <div *ngIf="getListError" class="alert alert-danger" role="alert">
+        Error Getting Games List
+    </div>
+    <div *ngIf="noGamesFound" class="alert alert-warning" role="alert">
+        No Games found with the matching citeria
+    </div>
 </div>
