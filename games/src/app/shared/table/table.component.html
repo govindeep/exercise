@@ -10,7 +10,7 @@
     <tr *ngFor="let game of tableData; index as i">
         <td [innerHtml]="game.name"></td>
         <td [innerHtml]="game.shortdescription"></td>
-        <td [innerHtml]="game.datecreated | date:'longDate'"></td>
+        <td [innerHtml]="game.datecreated | customDate"></td>
         <td [innerHtml]="game.createdby"></td>
         <td [innerHtml]="game.hostdays"></td>
         <td [innerHtml]="game.password"></td>
