@@ -1,4 +1,11 @@
 # exercise
 Frontend coding exercise
 
-# Readme Test
+## Prerequisites
+> nodejs version 12.11.0
+
+## Running Locally
+``` 
+npm install
+npm start
+```
