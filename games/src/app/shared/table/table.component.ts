@@ -14,4 +14,15 @@ export class TableComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * @name handleRowClick
+   * @description Handles click on table rows and opens the url param in a new tab
+   * @param url external url to open
+   */
+  public handleRowClick(url) {
+    window.open(
+      url,
+      '_blank'
+    );
+  }
 }

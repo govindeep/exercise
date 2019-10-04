@@ -3,6 +3,7 @@ import { HomeService } from './home.service';
 import { GameStatus } from '../shared/enums/game-status.enum';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,10 @@ export class HomeComponent implements OnInit {
     this._loadGamesList();
   }
 
+  /**
+   * @name _loadGamesList
+   * @description attaches the gamesList observable to the service response
+   */
   private _loadGamesList(): void {
     this.gamesList$ = this._homeService.getGamesList(GameStatus.Joining)
       .pipe(
@@ -32,6 +37,12 @@ export class HomeComponent implements OnInit {
       )
   }
 
+  /**
+   * @name _formatGamesData
+   * @description formats games data
+   * @param {Array} data games list data from planets
+   * @returns {Array} array of formatted games data
+   */
   private _formatGamesData(data: []) {
     return data.map((game: any) => {
       return {
@@ -40,7 +51,8 @@ export class HomeComponent implements OnInit {
         dateCreated: game.datecreated,
         createdBy: game.createdby === 'none' ? '' : game.createdby,
         hostDays: game.hostdays,
-        password: game.password
+        password: game.password.length > 0,
+        url: `${environment.planetsGameInfoUrl}?gameid=${game.id}`
       }
     })
   }

@@ -1,6 +1,6 @@
-<div class="home container-fluid" *ngIf="gamesList$ | async as games" [ngClass]="[games ? 'fade-in' : 'invisible']">
+<div class="home container-fluid mt-3" *ngIf="gamesList$ | async as games" [ngClass]="[games ? 'fade-in' : 'invisible']">
     <app-table [tableData]="games"></app-table>
 </div>
-<div *ngIf="getListError">
-    ERROR GETTING DATA
+<div *ngIf="getListError" class="alert alert-danger" role="alert">
+    Error Getting Games List
 </div>

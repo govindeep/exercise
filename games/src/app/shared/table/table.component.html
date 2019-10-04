@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
             <th>Name</th>
@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let game of tableData; index as i">
+        <tr *ngFor="let game of tableData" (click)=handleRowClick(game.url)>
             <td [innerHtml]="game.name"></td>
             <td [innerHtml]="game.shortDescription"></td>
             <td [innerHtml]="game.dateCreated | customDate"></td>

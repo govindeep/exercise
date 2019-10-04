@@ -14,11 +14,12 @@ export class HomeService {
   ) {}
 
   /**
-   * Returns an array of games
+   * @name getGamesList
+   * @description Returns an array of games
    * @param status status of the game to get
    */
   public getGamesList(status?: GameStatus): Observable<any> {
     const requestUrl = `${environment.planetsUrl}games/list?status=${status}`;
-    return this._http.get(requestUrl)
+    return this._http.get(requestUrl);
   }
 }
