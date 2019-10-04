@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.fade-in {
+  opacity: 1;
+  animation: fadein 2s;
+  -webkit-animation: fadein 2s;
+}
+
+.invisible {
+  opacity: 0;
+}

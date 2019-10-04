@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  planetsUrl: 'http://api.planets.nu/'
 };
