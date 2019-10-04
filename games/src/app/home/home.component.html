@@ -1,4 +1,4 @@
-<div class="home" *ngIf="gamesList$ | async as games" [ngClass]="[games ? 'fade-in' : 'invisible']">
+<div class="home container-fluid" *ngIf="gamesList$ | async as games" [ngClass]="[games ? 'fade-in' : 'invisible']">
     <app-table [tableData]="games"></app-table>
 </div>
 <div *ngIf="getListError">
