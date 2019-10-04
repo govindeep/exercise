@@ -15,7 +15,7 @@
             <td [innerHtml]="game.shortDescription"></td>
             <td [innerHtml]="game.dateCreated | customDate"></td>
             <td [innerHtml]="game.createdBy"></td>
-            <td [innerHtml]="game.hostDays"></td>
+            <td [innerHtml]="game.hostDays" class="text-nowrap"></td>
             <td>
                 <i *ngIf="game.password" class="material-icons">lock</i>
             </td>
