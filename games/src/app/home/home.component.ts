@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { GameStatus } from '../shared/enums/game-status.enum';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   gamesList$: Observable<any[]>;
+  getListError = false;
 
   constructor(
     private _homeService: HomeService
@@ -20,7 +22,13 @@ export class HomeComponent implements OnInit {
   }
 
   private _loadGamesList(): void {
-    this.gamesList$ = this._homeService.getGamesList(GameStatus.Joining);
+    this.gamesList$ = this._homeService.getGamesList(GameStatus.Joining)
+      .pipe(
+        catchError((err) => {
+          this.getListError = true;
+          return throwError(err);
+        })
+      )
   }
 
 }
