@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
           createdBy: game.createdby === 'none' ? '' : game.createdby,
           hostDays: game.hostdays,
           password: game.password.length > 0,
-          url: `${environment.planetsGameInfoUrl}?gameid=${game.id}`
+          url: `${environment.planetsGameInfoUrl}?gameid=${game.id}` // Assumption: Not sure what the url to review the game is using this
         }
       })
     } else {
